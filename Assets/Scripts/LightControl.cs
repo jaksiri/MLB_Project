@@ -8,7 +8,7 @@ public class LightControl : MonoBehaviour
     [SerializeField]
     private Slider LightSlider;
     [SerializeField]
-    private float startValue = 20.0f;
+    private float startValue = 20.0f;   //Set as these values to exaggerate the sun's direction effect on the seats
     [SerializeField]
     private float endValue = 160.0f;
    

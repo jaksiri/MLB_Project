@@ -8,6 +8,14 @@ namespace UnityTemplateProjects
 {
     public class SimpleCameraController : MonoBehaviour
     {
+        private void Awake()
+        {
+            GameManager.OnCameraChanged += OnOnCameraChange;
+        }
+        public void OnOnCameraChange(GameObject marker)
+        {
+            m_TargetCameraState.SetFromTransform(marker.transform);
+        }
         class CameraState
         {
             public float yaw;
@@ -16,6 +24,8 @@ namespace UnityTemplateProjects
             public float x;
             public float y;
             public float z;
+
+            
 
             public void SetFromTransform(Transform t)
             {
@@ -131,30 +141,30 @@ namespace UnityTemplateProjects
             direction.z = moveDelta.y;
             direction.y = verticalMovementAction.ReadValue<Vector2>().y;
 #else
-            if (Input.GetKey(KeyCode.W))
-            {
-                direction += Vector3.forward;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                direction += Vector3.back;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                direction += Vector3.left;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                direction += Vector3.right;
-            }
-            if (Input.GetKey(KeyCode.Q))
-            {
-                direction += Vector3.down;
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                direction += Vector3.up;
-            }
+            //if (Input.GetKey(KeyCode.W))
+            //{
+            //    direction += Vector3.forward;
+            //}
+            //if (Input.GetKey(KeyCode.S))
+            //{
+            //    direction += Vector3.back;
+            //}
+            //if (Input.GetKey(KeyCode.A))
+            //{
+            //    direction += Vector3.left;
+            //}
+            //if (Input.GetKey(KeyCode.D))
+            //{
+            //    direction += Vector3.right;
+            //}
+            //if (Input.GetKey(KeyCode.Q))
+            //{
+            //    direction += Vector3.down;
+            //}
+            //if (Input.GetKey(KeyCode.E))
+            //{
+            //    direction += Vector3.up;
+            //}
 #endif
             return direction;
         }
