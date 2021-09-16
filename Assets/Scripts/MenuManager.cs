@@ -6,7 +6,8 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField]
-    private GameObject guideMenu, inSeatMenu, seatSelectMenu;   //Reference for menu items to be shown/hidden
+    private GameObject guideMenu, inSeatMenu, seatSelectMenu, moreInfoPanel;   //Reference for menu items to be shown/hidden
+    private bool panelStatus = true;
 
     private void Awake()
     {
@@ -18,6 +19,16 @@ public class MenuManager : MonoBehaviour
     {
         guideMenu.SetActive(state == GameState.Guide);
         inSeatMenu.SetActive(state == GameState.InSeat);
+        if (state != GameState.InSeat || state != GameState.SelectSeat)
+        {
+            moreInfoPanel.SetActive(false);
+        }
         seatSelectMenu.SetActive(state == GameState.SelectSeat);
+    }
+
+    public void TogglePanel()
+    {
+        moreInfoPanel.SetActive(panelStatus);
+        panelStatus = !panelStatus;
     }
 }
